@@ -1,0 +1,17 @@
+#!/bin/sh
+alias s="sway"
+alias c="clear"
+alias sdn="shutdown -h now"
+alias rb="reboot"
+alias pm="pacman --color always"
+alias spm="sudo pacman --color always"
+alias mkd="mkdir -pv"
+alias mkdir="mkdir -pv"
+alias rm="rm -vI"
+alias mv="mv -vi"
+alias cp="cp -vi"
+alias ls="ls -xX --group-directories-first --color=auto -1"
+alias grep="grep --color=auto"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget_hsts"
+alias sudoedit='function _sudoedit(){sudo -e "$1";};_sudoedit'
+alias dotfiles="/usr/bin/git --git-dir=$HOME/projects/dotfiles --work-tree=$HOME"

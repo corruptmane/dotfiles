@@ -1,0 +1,107 @@
+{
+    "position": "top", 
+    "height": 33, 
+
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces", "sway/mode", "sway/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["pulseaudio", "sway/language", "network", "memory", "cpu", "battery"],//, "temperature"],
+
+    // Modules configuration
+     "sway/workspaces#icons": {
+         "disable-scroll": true,
+         "format": " {name} ",
+         "format-icons": {
+             "1": "󰣇",
+             "2": "󰞷",
+             "3": "󰌽",
+             "4": "󰷈",
+             "5": "󰅶",
+             "6": "󰽰",
+             "7": "󰍹",
+             "8": "󰍹",
+             "9": "󰍹",
+             "urgent": "",
+             "focused": "f",
+             "default": "d",
+	     "persistent": "p"
+         }
+     },
+
+    "sway/workspaces": {
+         "disable-scroll": true,
+         "format": " {name} ",
+	 "current-only": false,
+         "format-icons": {
+             "urgent": "",
+             "focused": "󰑊",
+	     "persistent": "󰻃",
+             "default": "󰧞"
+	}
+     },
+
+    "sway/mode": {
+        "format": "<span font_weight=\"Regular\">{}</span>"
+    },
+    "sway/window": {
+	"max-length": 45
+	},
+
+
+    "clock": {
+	"format": "󰥔 {:%a, %b %e, %I:%M %p}",
+        "tooltip" : false,
+        "format-alt": "󰥔{:%A, %e %B %Y, %I:%M:%S %p}",
+	"on-click-right": "launch_calendar"
+    },
+
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{icon}",
+        "format-ethernet": "",
+        "format-linked": "",
+        "format-disconnected": "󰤭",
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+	"format-icons": [ "󰤟", "󰤢", "󰤥", "󰤨" ],
+        "on-click-right": "if [ $(pgrep connman-gtk) ]; then pkill connman-gtk; else connman-gtk; fi"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+        "tooltip": false
+    },
+    
+    "memory": {
+        "format": " {}%"
+    },
+
+	"sway/language": {
+		"format": "{}",
+		"max-length": 50
+	},
+    
+	"battery": {
+		"bat": "BAT0",
+		"interval": 15,
+		"states": {
+			"warning": 30,
+			"critical": 15
+		},
+		"format": "{icon}  {capacity}%",
+		"format-icons": ["", "", "", "", ""]
+	},
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰖁 {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-bluetooth-muted": "󰖁  {volume}%",
+        "format-icons": {
+            "headphone": ["󰕿", "󰖀", "󰕾"],
+	    "headset": "󰋎",
+            "default": ["󰕿", "󰖀", "󰕾"]
+        },
+        "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "on-click-right": "if [ $(pgrep pavucontrol) ]; then pkill pavucontrol; else pavucontrol; fi"
+    }
+}
