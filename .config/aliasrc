@@ -14,4 +14,4 @@ alias ls="ls -xX --group-directories-first --color=auto -1"
 alias grep="grep --color=auto"
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget_hsts"
 alias sudoedit='function _sudoedit(){sudo -e "$1";};_sudoedit'
-alias dotfiles="/usr/bin/git --git-dir=$HOME/projects/dotfiles --work-tree=$HOME"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/projects/dotfiles_bare --work-tree=$HOME"
