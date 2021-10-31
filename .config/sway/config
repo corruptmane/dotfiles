@@ -104,6 +104,8 @@ input type:touchpad {
 input * {
     xkb_layout "us,ru"
     xkb_options "grp:alt_shift_toggle"
+    repeat_delay 250
+    repeat_rate 40
 }
 
 #
@@ -161,11 +163,6 @@ input * {
     bindsym --to-code $mod+b splith
     bindsym --to-code $mod+v splitv
 
-    # Switch the current container between different layout styles
-    bindsym --to-code $mod+s layout stacking
-    bindsym --to-code $mod+w layout tabbed
-    bindsym --to-code $mod+e layout toggle split
-
     # Make the current focus fullscreen
     bindsym --to-code $mod+f fullscreen
 
@@ -178,9 +175,14 @@ input * {
     # Move focus to the parent container
     bindsym --to-code $mod+a focus parent
 
+# Screenshots
 bindsym Print exec grim -t jpeg ~/pix/shots/$(date +%Y-%m-%d_%H-%m-%s).jpg
-
 bindsym $mod+Print exec grim -t jpeg -g "$(slurp)" ~/pix/shots/$(date +%Y-%m-%d_%H-%m-%s).jpg
+
+# Programs start hotkeys
+bindsym --to-code $mod+p exec pycharm
+bindsym --to-code $mod+w exec firefox
+bindsym --to-code $mod+t exec telegram-desktop
 
 #
 # Scratchpad:
