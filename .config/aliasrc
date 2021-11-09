@@ -1,6 +1,5 @@
 #!/bin/sh
 alias s="sway"
-alias c="clear"
 alias sdn="shutdown -h now"
 alias rb="reboot"
 alias pm="pacman --color always"
@@ -21,3 +20,4 @@ alias gs="git status"
 alias ga="git add"
 alias gc="git commit -m"
 alias gp="git push"
+alias gd="git diff"

@@ -29,7 +29,7 @@ colors:
   normal:
     # NOTE: Use '#131613' for the `black` color if you'd like to see
     # black text on the background.
-    black:   '#282c34'
+    black:   '#131613'
     red:     '#e06c75'
     green:   '#98c379'
     yellow:  '#d19a66'
@@ -49,10 +49,14 @@ colors:
     white:   '#ffffff'
 
 
-background_opacity: 0.5
+background_opacity: 0.6
 
+live_config_reload: true
 
-shell:
-  program: /bin/zsh
-  args:
-    - --login
+scrolling:
+  history: 5000
+
+  multiplier: 10
+
+mouse:
+  hide_when_typing: false

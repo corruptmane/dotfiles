@@ -159,7 +159,7 @@ bindsym XF86AudioPrev exec playerctl previous
 # Programs start hotkeys
 bindsym --to-code $alt+p exec pycharm
 bindsym --to-code $alt+w exec brave
-bindsym --to-code $alt+t exec telegram-desktop
+bindsym --to-code $alt+t exec kotatogram-desktop
 bindsym --to-code $alt+e exec element-desktop
 bindsym --to-code $alt+k exec keepassxc
 bindsym --to-code $alt+h exec alacritty -e htop
