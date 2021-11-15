@@ -9,8 +9,9 @@ margin=10
 progress-color=source #60606080
 max-icon-size=100
 
-border-size=0
+border-size=1
 border-radius=0
+border-color=#131613
 
 default-timeout=5000
 

@@ -40,9 +40,6 @@ bindsym $mod+Return exec $term
 # Kill focused window
 bindsym --to-code $mod+Shift+q kill
 
-# Start your launcher
-bindsym --to-code $mod+d exec $menu
-
 floating_modifier $mod normal
 
 # Reload the configuration file
@@ -157,6 +154,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # Programs start hotkeys
+bindsym --to-code $mod+d exec $menu
 bindsym --to-code $alt+p exec pycharm
 bindsym --to-code $alt+w exec brave
 bindsym --to-code $alt+t exec kotatogram-desktop
