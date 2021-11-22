@@ -21,17 +21,16 @@ default_border pixel 0
 default_floating_border pixel 0
 
 # notification-daemon
-exec mako
+exec_always mako
 
 ### Idle configuration
 exec swayidle -w \
          timeout 600 'swaylock -f -c 000000' \
          timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'playerctl pause' \
-         before-sleep 'swaylock -f -c 000000'
+         before-sleep 'playerctl pause' before-sleep 'swaylock -f -c 000000'
 
 # xwayland version
-for_window [class="Brave-browser"] inhibit_idle fullscreen
+for_window [class="Brave-browser"] inhibit_idle focus
 
 ### Key bindings
 # Start a terminal
@@ -131,23 +130,19 @@ bindsym Print exec grim - | swappy -f -
 bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -
 
 ### Fn Keybinds
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym $mod+F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym $mod+Shift+F2 exec pactl set-sink-volume @DEFAULT_SINK@ -1%
+bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym $mod+Shift+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +1%
 
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym $mod+F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym $mod+F4 exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym Shift+XF86MonBrightnessDown exec brightnessctl set 1%-
-bindsym XF86Explorer exec brightnessctl set 5%-
-bindsym Shift+XF86Explorer exec brightnessctl set 1%-
+bindsym $mod+F5 exec brightnessctl set 5%-
+bindsym $mod+Shift+F5 exec brightnessctl set 1%-
 
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym Shift+XF86MonBrightnessUp exec brightnessctl set +1%
-bindsym XF86Calculator exec brightnessctl set +5%
-bindsym Shift+XF86Calculator exec brightnessctl set +1%
+bindsym $mod+F6 exec brightnessctl set +5%
+bindsym $mod+Shift+F6 exec brightnessctl set +1%
 
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
