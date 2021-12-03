@@ -25,11 +25,13 @@ exec_always mako
 
 ### Idle configuration
 exec swayidle -w \
-         timeout 600 'swaylock -f -c 000000' \
-         timeout 900 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-         before-sleep 'playerctl pause' before-sleep 'swaylock -f -c 000000'
+        timeout 600 'swaylock -f -c 000000' \
+        timeout 900 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+        before-sleep 'playerctl pause' \
+        before-sleep 'swaylock -f -c 000000'
 
-# xwayland version
+# No idle in Brave when focused
 for_window [class="Brave-browser"] inhibit_idle focus
 
 ### Key bindings
@@ -144,8 +146,11 @@ bindsym $mod+Shift+F5 exec brightnessctl set 1%-
 bindsym $mod+F6 exec brightnessctl set +5%
 bindsym $mod+Shift+F6 exec brightnessctl set +1%
 
+bindsym --to-code $mod+p exec playerctl play-pause
 bindsym XF86AudioPlay exec playerctl play-pause
+bindsym --to-code $mod+n exec playerctl next
 bindsym XF86AudioNext exec playerctl next
+bindsym --to-code $mod+Shift+n exec playerctl previous
 bindsym XF86AudioPrev exec playerctl previous
 
 # Programs start hotkeys
@@ -156,6 +161,8 @@ bindsym --to-code $alt+t exec kotatogram-desktop
 bindsym --to-code $alt+e exec element-desktop
 bindsym --to-code $alt+k exec keepassxc
 bindsym --to-code $alt+h exec alacritty -e htop
+bindsym --to-code $alt+m exec flatpak run com.spotify.Client
+bindsym --to-code $alt+s exec save_spotify_track
 
 ### Scratchpad:
 bindsym $mod+Shift+minus move scratchpad

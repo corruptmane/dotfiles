@@ -12,7 +12,7 @@ export READER="zathura"
 export FILE="lf"
 
 # Wayland optimization
-export GDK_BACKEND=wayland
+export GDK_BACKEND="wayland,x11"
 
 # Default XDG directories
 export XDG_DOCUMENTS_DIR="$HOME/dox"
@@ -23,6 +23,7 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
+export XDG_RUNTIME_DIR="/run/user/$UID"
 
 export GRIPHOME="${XDG_CONFIG_HOME:-$HOME/.config}/grip"
 export PSQLRC="${XDG_CONFIG_HOME:-$HOME/.config}/pg/psqlrc"
