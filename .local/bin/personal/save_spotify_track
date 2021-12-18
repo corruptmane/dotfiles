@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 spotify save --yes --quiet . > /dev/null
 SPOTIFY_OUTPUT=$(spotify status -v)
 ARTIST=$(echo "$SPOTIFY_OUTPUT" | awk "/^Artist/" | sed "s/^Artist\s*//")

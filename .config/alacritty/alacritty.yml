@@ -15,7 +15,7 @@ font:
     family: JetBrainsMono
     style: Bold Italic
 
-  size: 13.5
+  size: 16
 
 
 draw_bold_text_with_bright_colors: true
