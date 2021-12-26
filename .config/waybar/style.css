@@ -112,8 +112,8 @@ window#waybar.hidden {
 }
 
 #pulseaudio, #language, #battery, #network, #cpu, #memory {
-    padding: 0 10px;
-    margin: 3px 0px 3px 0px;
+    padding: 0px 10px;
+    margin: 3px 0px 0px 0px;
     background-color: @background;
     color: @foreground;
 }
@@ -122,10 +122,10 @@ window#waybar.hidden {
     border-radius: 10px 0px 0px 10px;
 }
 
-#network {
-    border-radius: 0px 10px 10px 0px;
-    margin: 3px 3px 3px 0;
-}
+/* #network { */
+/*     border-radius: 0px 10px 10px 0px; */
+/*     margin: 3px 3px 3px 0; */
+/* } */
 
 
 #battery.charging {

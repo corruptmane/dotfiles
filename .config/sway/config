@@ -1,196 +1,23 @@
-### Variables
-set $mod Mod4
-set $alt Mod1
+### Main configuration file
 
-set $left h
-set $down j
-set $up k
-set $right l
+## Variables
+include ~/.config/sway/variables
 
-set $term alacritty
+## Keybindings
+include ~/.config/sway/keybindings
 
-set $menu wofi --show run
+## Colorscheme
+include ~/.config/sway/colorschemes/main
 
-# Default wallpaper
-output * bg /home/vyr0d0k/pix/wlps/2367875.jpg fill
+## Input
+include ~/.config/sway/input
 
-# gaps
-gaps outer 8
-gaps inner 7
-default_border pixel 0
-default_floating_border pixel 0
+## Output
+include ~/.config/sway/output
 
-# notification-daemon
-exec_always mako
+## Start bar
+include ~/.config/sway/waybar
 
-### Idle configuration
-exec swayidle -w \
-        timeout 600 'swaylock -f -c 000000' \
-        timeout 900 'swaymsg "output * dpms off"' \
-        resume 'swaymsg "output * dpms on"' \
-        before-sleep 'playerctl pause' \
-        before-sleep 'swaylock -f -c 000000'
-
-# No idle in Brave when focused
-for_window [class="Brave-browser"] inhibit_idle focus
-
-### Key bindings
-# Start a terminal
-bindsym $mod+Return exec $term
-
-# Kill focused window
-bindsym --to-code $mod+Shift+q kill
-
-floating_modifier $mod normal
-
-# Reload the configuration file
-bindsym --to-code $mod+Shift+c reload
-
-# Exit sway (logs you out of your Wayland session)
-bindsym --to-code $mod+Shift+e exec swaymsg exit
-
-# Touchpad optimize
-input type:touchpad {
-    tap enabled
-    natural_scroll enabled
-}
-
-# kb preferences
-input * {
-    xkb_layout "us,ru"
-    xkb_options "grp:alt_shift_toggle"
-    repeat_delay 250
-    repeat_rate 40
-}
-
-### Moving around:
-
-# Move your focus around
-bindsym --to-code $mod+$left focus left
-bindsym --to-code $mod+$down focus down
-bindsym --to-code $mod+$up focus up
-bindsym --to-code $mod+$right focus right
-
-# Or us--to-code  $mod+[up|down|left|right]
-bindsym --to-code $mod+Left focus left
-bindsym --to-code $mod+Down focus down
-bindsym --to-code $mod+Up focus up
-bindsym --to-code $mod+Right focus right
-
-# Move the focused window with the same, but add Shift
-bindsym --to-code $mod+Shift+$left move left
-bindsym --to-code $mod+Shift+$down move down
-bindsym --to-code $mod+Shift+$up move up
-bindsym --to-code $mod+Shift+$right move right
-
-# Ditto--to-code  with arrow keys
-bindsym --to-code $mod+Shift+Left move left
-bindsym --to-code $mod+Shift+Down move down
-bindsym --to-code $mod+Shift+Up move up
-bindsym --to-code $mod+Shift+Right move right
-
-### Workspaces:
-
-# Switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-
-### Layout stuff:
-bindsym --to-code $mod+b splith
-bindsym --to-code $mod+v splitv
-
-# Make the current focus fullscreen
-bindsym --to-code $mod+f fullscreen
-
-# Toggle the current focus between tiling and floating mode
-bindsym $mod+Shift+space floating toggle
-
-# Swap focus between the tiling area and the floating area
-bindsym $mod+space focus mode_toggle
-
-# Move focus to the parent container
-bindsym --to-code $mod+a focus parent
-
-# Screenshots
-bindsym Print exec grim - | swappy -f -
-bindsym $mod+Print exec grim -g "$(slurp)" - | swappy -f -
-
-### Fn Keybinds
-bindsym $mod+F2 exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym $mod+Shift+F2 exec pactl set-sink-volume @DEFAULT_SINK@ -1%
-bindsym $mod+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym $mod+Shift+F3 exec pactl set-sink-volume @DEFAULT_SINK@ +1%
-
-bindsym $mod+F1 exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym $mod+F4 exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-bindsym $mod+F5 exec brightnessctl set 5%-
-bindsym $mod+Shift+F5 exec brightnessctl set 1%-
-
-bindsym $mod+F6 exec brightnessctl set +5%
-bindsym $mod+Shift+F6 exec brightnessctl set +1%
-
-bindsym --to-code $mod+p exec playerctl play-pause
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym --to-code $mod+n exec playerctl next
-bindsym XF86AudioNext exec playerctl next
-bindsym --to-code $mod+Shift+n exec playerctl previous
-bindsym XF86AudioPrev exec playerctl previous
-
-# Programs start hotkeys
-bindsym --to-code $mod+d exec $menu
-bindsym --to-code $alt+p exec pycharm
-bindsym --to-code $alt+w exec brave
-bindsym --to-code $alt+t exec kotatogram-desktop
-bindsym --to-code $alt+e exec element-desktop
-bindsym --to-code $alt+k exec keepassxc
-bindsym --to-code $alt+h exec alacritty -e htop
-bindsym --to-code $alt+m exec flatpak run com.spotify.Client
-bindsym --to-code $alt+s exec save_spotify_track
-bindsym --to-code $mod+$alt+r exec reboot
-bindsym --to-code $mod+$alt+t exec termius
-
-### Scratchpad:
-bindsym $mod+Shift+minus move scratchpad
-bindsym $mod+minus scratchpad show
-
-### Resizing containers:
-mode "resize" {
-    bindsym --to-code $left resize shrink width 10px
-    bindsym --to-code $down resize grow height 10px
-    bindsym --to-code $up resize shrink height 10px
-    bindsym --to-code $right resize grow width 10px
-
-    # Ditto, with arrow keys
-    bindsym Left resize shrink width 10px
-    bindsym Down resize grow height 10px
-    bindsym Up resize shrink height 10px
-    bindsym Right resize grow width 10px
-
-    # Return to default mode
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
-bindsym --to-code $mod+r mode "resize"
-
-### Status Bar:
-bar {
-	swaybar_command waybar
-}
+## Systemd thingy (do not touch)
 include /etc/sway/config.d/*
+

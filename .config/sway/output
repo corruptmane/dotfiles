@@ -1,0 +1,5 @@
+### Output config
+
+# Background
+output * bg ~/pix/wlps/japan-grey.jpg fill
+

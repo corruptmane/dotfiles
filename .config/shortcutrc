@@ -1,5 +1,5 @@
 #!/bin/sh
-alias dotfiles="/usr/bin/git --git-dir=$HOME/projects/dotfiles_bare --work-tree=$HOME"
+alias dotfiles="/usr/bin/git --git-dir=$HOME/prj/dotfiles_bare --work-tree=$HOME"
 alias cf="cd $XDG_CONFIG_HOME && ls -A"
 alias cfz="nvim $XDG_CONFIG_HOME/zsh/.zshrc"
 alias cfp="nvim $HOME/.zprofile"

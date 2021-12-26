@@ -38,6 +38,7 @@ zstyle ':completion:*' menu select
 zmodload zsh/complist
 compinit -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
 _comp_options+=(globdots)		# Include hidden files.
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370,bg=bold"
 
 # vi mode
 bindkey -v
@@ -90,5 +91,6 @@ bindkey -s '^o' 'lfcd\n'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# Load zsh-syntax-highlighting; should be last.
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+# Load zsh-syntax-highlighting and zsh-autosuggestions; should be last.
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

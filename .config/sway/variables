@@ -1,0 +1,37 @@
+### Variables
+
+set $mod Mod4
+set $alt Mod1
+
+set $left h
+set $down j
+set $up k
+set $right l
+
+set $term alacritty
+set $menu wofi --show run
+
+## Gaps
+
+gaps outer 8
+gaps inner 7
+default_border pixel 2
+default_floating_border pixel 2
+
+## Notification-daemon
+
+exec_always mako
+
+## Idle configuration
+
+exec swayidle -w \
+        timeout 600 'swaylock -f -c 000000' \
+        timeout 900 'swaymsg "output * dpms off"' \
+        resume 'swaymsg "output * dpms on"' \
+        before-sleep 'playerctl pause' \
+        before-sleep 'swaylock -f -c 000000'
+
+# No idle in Brave when focused
+for_window [class="Brave-browser"] inhibit_idle focus
+
+floating_modifier $mod normal

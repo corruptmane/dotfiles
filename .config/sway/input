@@ -1,0 +1,16 @@
+### Input configuration
+
+# Keyboard layout
+input * {
+    xkb_layout "us,ru"
+    xkb_options "grp:alt_shift_toggle"
+    repeat_delay 250
+    repeat_rate 40
+}
+
+# Touchpad layout
+input type:touchpad {
+    tap enabled
+    natural_scroll enabled
+}
+

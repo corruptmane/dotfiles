@@ -1,0 +1,11 @@
+### Color scheme configuration
+
+# Color-scheme
+set $main                   #abb2bf
+set $secondary              #131613
+set $text-color             #f3f4f5
+set $inactive-text-color    #676e7d
+
+# Window colors         border      background  text    indicator
+client.focused          $main       $main       $main   #6d6a69
+client.unfocused        $secondary  $secondary  $main   #6d6a69
