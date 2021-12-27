@@ -111,7 +111,7 @@ bindsym --to-code $alt+t exec kotatogram-desktop
 bindsym --to-code $alt+e exec element-desktop
 bindsym --to-code $alt+k exec keepassxc
 bindsym --to-code $alt+h exec alacritty -e htop
-bindsym --to-code $alt+m exec flatpak run com.spotify.Client
+bindsym --to-code $alt+m exec spotify
 bindsym --to-code $alt+s exec save_spotify_track
 bindsym --to-code $mod+$alt+t exec termius
 
