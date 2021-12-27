@@ -14,6 +14,9 @@ export FILE="lf"
 # Wayland optimization
 export GDK_BACKEND="wayland,x11"
 
+# JetBrains products (PyCharm) optimization under Wayland
+export _JAVA_AWT_WM_MONREPARENTING=1
+
 # Default XDG directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
@@ -37,8 +40,8 @@ export PGSERVICEFILE="${XDG_CONFIG_HOME:-$HOME/.config}/pg/pg_service.conf"
 export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export WAKATIME_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/wakatime"
 export IPYTHONDIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
-export WGETRC="${XDG_CONFIG_HOME:-$HOME}/wgetrc"
-export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
+export WGETRC="${XDG_CONFIG_HOME:-$HOME/.config}/wgetrc"
+export _JAVA_OPTIONS=-Djava.util.prefs.userRoot="${XDG_CONFIG_HOME:=$HOME/.config}/java"
 
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
