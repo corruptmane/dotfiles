@@ -14,9 +14,6 @@ export FILE="lf"
 # Wayland optimization
 export GDK_BACKEND="wayland,x11"
 
-# JetBrains products (PyCharm) optimization under Wayland
-export _JAVA_AWT_WM_MONREPARENTING=1
-
 # Default XDG directories
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
