@@ -18,6 +18,10 @@ gaps inner 7
 default_border pixel 2
 default_floating_border pixel 2
 
+## JetBrains products (PyCharm) optimization under Wayland
+
+exec wmname compiz
+
 ## Notification-daemon
 
 exec_always mako
