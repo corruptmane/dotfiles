@@ -17,6 +17,8 @@ Plug 'tpope/vim-surround'
 Plug 'vim-python/python-syntax'
 
 " other stuff
+Plug 'github/copilot.vim'
+Plug 'wakatime/vim-wakatime'
 Plug 'tpope/vim-commentary'
 Plug 'ap/vim-css-color'
 Plug 'preservim/nerdtree'
@@ -42,6 +44,7 @@ set number relativenumber
 set noswapfile
 set scrolloff=5
 set wildmode=longest,list,full
+set iskeyword-=_
 
 set tabstop=4
 set softtabstop=4

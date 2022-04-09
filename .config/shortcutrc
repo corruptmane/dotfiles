@@ -1,5 +1,8 @@
 #!/bin/sh
 alias dotfiles="/usr/bin/git --git-dir=$HOME/prj/dotfiles_bare --work-tree=$HOME"
+alias docker-clean="docker system prune --all --force --volumes"
+alias .venv="source ./venv/bin/activate"
+alias ..venv="python -m venv venv && .venv"
 alias cf="cd $XDG_CONFIG_HOME && ls -A"
 alias cfz="nvim $XDG_CONFIG_HOME/zsh/.zshrc"
 alias cfp="nvim $HOME/.zprofile"
