@@ -108,7 +108,6 @@ cmd - 6 : yabai -m space --focus 6 || yabai -m space --focus recent; sketchybar 
 cmd - 7 : yabai -m space --focus 7 || yabai -m space --focus recent; sketchybar --trigger window_focus
 cmd - 8 : yabai -m space --focus 8 || yabai -m space --focus recent; sketchybar --trigger window_focus
 cmd - 9 : yabai -m space --focus 9 || yabai -m space --focus recent; sketchybar --trigger window_focus
-cmd - 0 : yabai -m space --focus 10 || yabai -m space --focus recent; sketchybar --trigger window_focus
 cmd - tab : yabai -m space --focus recent; sketchybar --trigger window_focus
 
 # create space and follow focus
@@ -131,7 +130,6 @@ shift + cmd - 6 : yabai -m window --space 6 && sketchybar --trigger windows_on_s
 shift + cmd - 7 : yabai -m window --space 7 && sketchybar --trigger windows_on_spaces
 shift + cmd - 8 : yabai -m window --space 8 && sketchybar --trigger windows_on_spaces
 shift + cmd - 9 : yabai -m window --space 9 && sketchybar --trigger windows_on_spaces
-shift + cmd - 0 : yabai -m window --space 10 && sketchybar --trigger windows_on_spaces
 
 # kill window
 cmd + shift - q : yabai -m window --close

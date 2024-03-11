@@ -1,6 +1,4 @@
 #!/bin/sh
-alias sdn="shutdown -h now"
-alias rb="sudo reboot"
 alias mkd="mkdir -pv"
 alias mkdir="mkdir -pv"
 alias rm="rm -vI"

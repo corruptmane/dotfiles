@@ -383,6 +383,9 @@ case $@ in
 "Sequel Ace")
   icon_result=":sequel_ace:"
   ;;
+"Zed")
+  icon_result=":zed:"
+  ;;
 *)
   icon_result=":default:"
   ;;

@@ -17,6 +17,8 @@ Plug('nvim-treesitter/playground')
 
 Plug('theprimeagen/harpoon')
 
+Plug('christoomey/vim-tmux-navigator')
+
 Plug('jiaoshijie/undotree')
 
 Plug('tpope/vim-fugitive')

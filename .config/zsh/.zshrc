@@ -29,9 +29,6 @@ HISTSIZE=10000000
 SAVEHIST=10000000
 HISTFILE=~/.cache/zsh/history
 
-# Specific poetry completions
-fpath+=~/.zfunc
-
 # Basic auto/tab complete:
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -43,6 +40,9 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#5c6370,bg=bold"
 # vi mode
 bindkey -v
 export KEYTIMEOUT=1
+
+# tmux fix
+bindkey -r "^A"
 
 # Use vim keys in tab complete menu:
 bindkey -M menuselect 'h' vi-backward-char
@@ -120,6 +120,9 @@ help() {
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# Load zoxide
+eval "$(zoxide init --cmd cd zsh)"
+
 # Load zsh-syntax-highlighting and zsh-autosuggestions; should be last.
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source /usr/local/share/nvim/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
