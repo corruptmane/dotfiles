@@ -1,29 +1,32 @@
-vim.keymap.set("n", "<leader>pv", function() vim.cmd("Ex") end)
+local map = function(mode, keys, func, opts)
+  vim.keymap.set(mode, keys, func, opts)
+end
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+-- Disable highlighting on <Esc> in normal mode
+map('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+-- Diagnostic keymaps
+map('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous [D]iagnostic message' })
+map('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagnostic message' })
+map('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
+map('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
--- vim.keymap.set("x", "<leader>p", [["_dP]])
+map('n', '<leader>pv', function () vim.cmd('Ex') end, { desc = 'Open [P]roject [V]iew' })
 
-vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
-vim.keymap.set("n", "<leader>Y", [["+Y]])
+map('v', 'J', "<cmd>m '>+1<CR>gv=gv", { desc = 'Move line down, automatically indent' })
+map('v', 'K', "<cmd>m '<-2<CR>gv=gv", { desc = 'Move line up, automatically indent' })
 
-vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
+map('n', '<C-d>', '<C-d>zz', { desc = 'Navigate down and center screen automatically' })
+map('n', '<C-u>', '<C-u>zz', { desc = 'Navigate up and center screen automatically' })
 
-vim.keymap.set("n", "Q", "<nop>")
+map('n', 'n', 'nzzzv', { desc = 'Navigate to next pattern, center screen automatically' })
+map('n', 'N', 'Nzzzv', { desc = 'Navigate to previous pattern, center screen automatically' })
 
-vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
+map({'n', 'v'}, '<leader>y', [["+y]], { desc = 'Yank (copy) to system clipboard' })
+map('n', '<leader>Y', [["+Y]], { desc = 'Yank (copy) to system clipboard' })
 
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+map({'n', 'v'}, '<leader>d', [["_d]], { desc = 'Delete to null registry' })
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+map('n', '<leader>|', '<cmd>vsp<CR>', { desc = 'Open vertical split' })
+map('n', '<leader>-', '<cmd>sp<CR>', { desc = 'Open horizontal split' })
+
