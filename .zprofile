@@ -39,3 +39,4 @@ export PSQL_HISTORY="${XDG_CACHE_HOME:-$HOME/.cache}/pg/psql_history"
 export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 export LESSHISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/less/history"
 export PYTHONCACHEPREFIX="${XDG_CACHE_HOME:-$HOME/.cache}/python"
+export PYTHONDONTWRITEBYTECODE=1
