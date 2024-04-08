@@ -152,3 +152,5 @@ cmd + alt - p : yabai -m window --toggle sticky; yabai -m window --toggle topmos
 
 # restart yabai and sketchybar
 cmd + shift - r : yabai --restart-service; brew services restart sketchybar
+
+ctrl + cmd + shift + alt - c : yabai -m space --focus 1 ; tmux neww bash -c "/Users/corrupt/.local/bin/personal/counters"
