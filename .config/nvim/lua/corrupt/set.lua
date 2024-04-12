@@ -20,8 +20,8 @@ vim.opt.smartcase = true
 
 vim.opt.termguicolors = true
 
-vim.opt.updatetime = 50
-vim.opt.timeoutlen = 100
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
