@@ -1,6 +1,6 @@
 return {
 
-  {
+  { -- Don't forget to install `silicon`. `brew install silicon`
     "michaelrommel/nvim-silicon",
     config = function ()
       require("silicon").setup({
