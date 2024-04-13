@@ -12,7 +12,6 @@ return {
         end
       })
       vim.keymap.set("v", "<leader>cs", ":Silicon<CR>", { desc = "[C]ode [S]napshot" })
-      print("pizda")
     end
   },
 
