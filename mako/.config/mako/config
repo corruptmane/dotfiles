@@ -1,0 +1,19 @@
+font=UbuntuMono 10
+
+background-color=#282C34
+text-color=#ABB2BF
+width=360
+height=150
+padding=15
+margin=10
+progress-color=source #60606080
+max-icon-size=100
+
+border-size=1
+border-radius=0
+border-color=#131613
+
+default-timeout=5000
+
+[urgency=high]
+ignore-timeout=1
