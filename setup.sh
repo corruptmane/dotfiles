@@ -28,7 +28,7 @@ for app in $base; do
     stowit "$HOME" "$app"
 done
 
-# install only user space folders
+# install only user space apps
 if [ "$(whoami)" != "root" ]; then
 	for app in $useronly; do
 		stowit "$HOME" "$app"
