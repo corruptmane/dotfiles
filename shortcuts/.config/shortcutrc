@@ -1,8 +1,5 @@
 #!/bin/sh
-alias dotfiles="/usr/bin/git --git-dir=$HOME/Code/dotfiles/ --work-tree=$HOME"
-alias cf="cd $XDG_CONFIG_HOME && ls -A"
 alias cfz="nvim $XDG_CONFIG_HOME/zsh/.zshrc"
-alias cfy="nvim $XDG_CONFIG_HOME/yabai/yabairc"
 alias cfp="nvim $HOME/.zprofile"
 alias cft="nvim $XDG_CONFIG_HOME/tmux/tmux.conf"
 alias cfn="nvim $XDG_CONFIG_HOME/nvim/init.lua"

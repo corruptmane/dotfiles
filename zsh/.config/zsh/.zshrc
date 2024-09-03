@@ -116,7 +116,3 @@ eval "$(zoxide init --cmd cd zsh)"
 # Load zsh-syntax-highlighting and zsh-autosuggestions; should be last.
 source /usr/local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# MacOS
-# source /usr/local/share/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-# source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
