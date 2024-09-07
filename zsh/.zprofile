@@ -24,6 +24,17 @@ export GTK_THEME="Adwaita:dark"
 export GTK2_RC_FILES="/usr/share/themes/Adwaita/gtk-2.0/gtkrc"
 export QT_STYLE_OVERRIDE="Adwaita-Dark"
 
+# NVIDIA proprietary drivers configuration
+# export WLR_NO_HARDWARE_CURSORS=1
+# export WLR_RENDERER="vulkan"
+# export XWAYLAND_NO_GLAMOR=1
+# export QT_QPA_PLATFORMTHEME="qt5ct"
+# export QT_QPA_PLATFORM="wayland"
+# export GDK_BACKEND="wayland"
+# export XDG_CURRENT_DESKTOP="sway"
+# export XDG_SESSION_DESKTOP="sway"
+# export MOZ_ENABLE_WAYLAND=1
+
 # cleanup ~/ directory
 export PSQLRC="${XDG_CONFIG_HOME:-$HOME/.config}/pg/psqlrc"
 export PGPASSFILE="${XDG_CONFIG_HOME:-$HOME/.config}/pg/pgpass"
@@ -45,5 +56,8 @@ export LESSHISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/less/history"
 export PYTHONCACHEPREFIX="${XDG_CACHE_HOME:-$HOME/.cache}/python"
 export PYTHONDONTWRITEBYTECODE=1
 
+# If running from tty1 start Hyprland
+[ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session Hyprland
+
 # If running from tty1 start sway
-[ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway
+# [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway

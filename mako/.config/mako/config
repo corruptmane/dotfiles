@@ -1,4 +1,4 @@
-output=eDP-1
+# output=eDP-1
 font=UbuntuMono 10
 
 background-color=#282C34

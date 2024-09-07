@@ -13,6 +13,7 @@ exec mako
 exec pipewire
 exec pipewire-pulse
 exec wireplumber
+exec --no-startup-id dbus-update-activation-environment --all
 
 ### Output configuration
 #
