@@ -1,8 +1,0 @@
-[init]
-        defaultBranch = main
-[user]
-        signingkey = D14741D61937EEC5
-        email = corruptmane@gmail.com
-        name = corruptmane
-[commit]
-        gpgsign = true

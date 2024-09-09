@@ -8,7 +8,7 @@ git submodule update
 base="npm nvim shortcuts tmux zsh"
 
 # directories that should, or only need to be installed for a local user
-useronly="git kitty mako sway waybar"
+useronly="kitty mako"
 
 # run the stow command for the passed in directory ($2) in location $1
 stowit() {
