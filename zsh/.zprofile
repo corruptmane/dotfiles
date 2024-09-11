@@ -57,7 +57,7 @@ export PYTHONCACHEPREFIX="${XDG_CACHE_HOME:-$HOME/.cache}/python"
 export PYTHONDONTWRITEBYTECODE=1
 
 # If running from tty1 start Hyprland
-[ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session Hyprland
+# [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session Hyprland
 
 # If running from tty1 start sway
 # [ "$(tty)" = "/dev/tty1" ] && exec dbus-run-session sway
