@@ -63,6 +63,10 @@ return {
           --  For example, in C this would take you to the header.
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
+          -- hover/signature help in insert mode
+          vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: signature help'})
+          vim.keymap.set('i', '<C-S-k>', vim.lsp.buf.hover, { buffer = event.buf, desc = 'LSP: hover docs'})
+
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --
