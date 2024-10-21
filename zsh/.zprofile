@@ -36,6 +36,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export WAKATIME_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/wakatime"
 export IPYTHONDIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/config"
+export KUBECONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/kube" 
 
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
@@ -48,6 +49,8 @@ export HISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/history"
 export LESSHISTFILE="${XDG_CACHE_HOME:-$HOME/.cache}/less/history"
 export PYTHONCACHEPREFIX="${XDG_CACHE_HOME:-$HOME/.cache}/python"
 export CUDA_CACHE_PATH="${XDG_CACHE_HOME:-$HOME/.cache}/nv"
+export KUBECACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/kube"
+
 export PYTHONDONTWRITEBYTECODE=1
 
 # If running from tty1 start Xorg
