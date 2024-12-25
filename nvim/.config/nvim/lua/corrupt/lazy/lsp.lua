@@ -14,6 +14,7 @@ return {
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
       { 'folke/neodev.nvim', opts = {} },
+      { 'saghen/blink.cmp' },
     },
     config = function()
       vim.api.nvim_create_autocmd('LspAttach', {
@@ -28,6 +29,7 @@ return {
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
           map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+
 
           -- Find references for the word under your cursor.
           map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
@@ -55,6 +57,18 @@ return {
           -- Execute a code action, usually your cursor needs to be on top of an error
           -- or a suggestion from your LSP for this to activate.
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
+          map('<leader>cf', vim.lsp.buf.format, '[C]ode [F]ormat')
+          map('<leader>ci', function()
+            vim.lsp.buf.code_action({
+              context = {
+                only = { "source.organizeImports" }
+              },
+              filter = function(action)
+                return action.title == "Ruff: Organize imports"
+              end,
+              apply = true,
+            })
+          end, '[C]ode [I]mports')
 
           -- Opens a popup that displays documentation about the word under your cursor
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -64,14 +78,25 @@ return {
           map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- hover/signature help in insert mode
-          vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: signature help'})
-          vim.keymap.set('i', '<C-S-k>', vim.lsp.buf.hover, { buffer = event.buf, desc = 'LSP: hover docs'})
+          vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, { buffer = event.buf, desc = 'LSP: signature help' })
+          vim.keymap.set('i', '<C-S-k>', vim.lsp.buf.hover, { buffer = event.buf, desc = 'LSP: hover docs' })
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
           --
           -- When you move your cursor, the highlights will be cleared (the second autocommand).
           local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client.supports_method('textDocument/formatting') then
+            vim.api.nvim_create_autocmd(
+              'BufWritePre',
+              {
+                buffer = event.buf,
+                callback = function()
+                  vim.lsp.buf.format({ bufnr = event.buf, id = client.id })
+                end
+              }
+            )
+          end
           if client and client.server_capabilities.documentHighlightProvider then
             vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
               buffer = event.buf,
@@ -86,11 +111,32 @@ return {
         end,
       })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
+      -- local capabilities = vim.lsp.protocol.make_client_capabilities()
+      -- capabilities = vim.tbl_deep_extend('force', capabilities)
 
       local servers = {
-        pyright = {},
+        pyright = {
+          -- Disable formatting for pyright
+          settings = {
+            python = {
+              formatting = {
+                provider = "none"
+              }
+            }
+          }
+        },
+        ['ruff-lsp'] = {
+          init_options = {
+            settings = {
+              format = {
+                args = {
+                  "--line-length=100", "--preview"
+                },
+              },
+            },
+          },
+        },
         lua_ls = {
           settings = {
             Lua = {
@@ -109,12 +155,18 @@ return {
       --  other tools, you can run `:Mason`
       require('mason').setup()
 
+      -- Diagnostics configuration
+      vim.diagnostic.config({
+        float = { source = "always", header = "", prefix = "" }
+      })
+
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua', -- Used to format Lua code
-        'pyright' -- Python LSP
+        'stylua',   -- Used to format Lua code
+        'pyright',  -- Python LSP
+        'ruff-lsp', -- Python LSP and formatter
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
