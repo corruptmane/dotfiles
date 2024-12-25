@@ -36,7 +36,7 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-$HOME/.config}/zsh"
 export WAKATIME_HOME="${XDG_CONFIG_HOME:-$HOME/.config}/wakatime"
 export IPYTHONDIR="${XDG_CONFIG_HOME:-$HOME/.config}/jupyter"
 export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/config"
-export KUBECONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/kube" 
+export KUBECONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/kube/kubeconfig.yaml"
 
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
