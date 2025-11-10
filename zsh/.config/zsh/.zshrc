@@ -23,6 +23,7 @@ PROMPT='%B%{$fg[cyan]%}%~ %F{red}${vcs_info_msg_0_}%f%b> '
 # Load aliases and shortcuts if existent.
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/aliasrc"
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shortcutrc"
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/secretrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/secretrc"
 
 # History in cache directory:
 HISTSIZE=10000000
@@ -113,6 +114,10 @@ bindkey '^e' edit-command-line
 # Load zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
-# Load zsh-syntax-highlighting and zsh-autosuggestions; should be last.
+# Load keychain
+eval "$(keychain --eval --quiet id_personal)"
+
+# Load various plugins; zsh-syntax-highlighting and zsh-autosuggestions should be last.
+source /usr/local/share/zsh/zsh-wakatime/zsh-wakatime.zsh
 source /usr/local/share/zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

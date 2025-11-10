@@ -51,7 +51,8 @@ local function insert_logging_setup()
 end
 
 -- Optional: Add a keymap
-vim.keymap.set("n", "<leader>ll", function()
+vim.keymap.set("n", "<leader>cpl", function()
   insert_logging_setup()
   ---@diagnostic disable-next-line: missing-fields
-end, { desc = "Insert Python logging setup" })
+end, { desc = "[C]ode [P]ython [L]ogger" })
+

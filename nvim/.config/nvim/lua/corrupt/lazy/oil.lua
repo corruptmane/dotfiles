@@ -17,6 +17,14 @@ return {
       ["-"] = "actions.parent",
       ["gs"] = "actions.change_sort",
       ["g."] = "actions.toggle_hidden",
+      ["gcwd"] = {
+        function()
+          local cwd = require("oil").get_current_dir()
+          vim.cmd("cd " .. cwd)
+          print("Changed CWD to: " .. cwd)
+        end,
+        mode = "n",
+      },
     },
   },
 }

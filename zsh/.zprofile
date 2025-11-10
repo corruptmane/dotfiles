@@ -6,9 +6,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_STATE_HOME="$HOME/.local/state"
 
-# PATH
-export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/bin:${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin"
-
 # git gpgsign fix
 export GPG_TTY=$(tty)
 
@@ -17,7 +14,7 @@ export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 export TERMINAL="kitty"
 export FILE="lf"
-export BROWSER="zen-browser"
+export BROWSER="brave-bin"
 
 # dark theme
 export GTK_THEME="Adwaita:dark"
@@ -39,6 +36,7 @@ export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/npm/config"
 export KUBECONFIG="${XDG_CONFIG_HOME:-$HOME/.config}/kube/kubeconfig.yaml"
 
 export GOPATH="${XDG_DATA_HOME:-$HOME/.local/share}/go"
+export GOBIN="$GOPATH/bin"
 export GNUPGHOME="${XDG_DATA_HOME:-$HOME/.local/share}/gnupg"
 export RUSTUP_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/rustup"
 export CARGO_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/cargo"
@@ -52,6 +50,10 @@ export CUDA_CACHE_PATH="${XDG_CACHE_HOME:-$HOME/.cache}/nv"
 export KUBECACHEDIR="${XDG_CACHE_HOME:-$HOME/.cache}/kube"
 
 export PYTHONDONTWRITEBYTECODE=1
+export ZSH_WAKATIME_PROJECT_DETECTION=true
+
+# PATH
+export PATH="$PATH:${XDG_DATA_HOME:-$HOME/.local/share}/bin:${XDG_DATA_HOME:-$HOME/.local/share}/cargo/bin:$GOBIN:${XDG_DATA_HOME:-$HOME/.local/share}/.npm-global/bin"
 
 # If running from tty1 start Xorg
 # [ "$(tty)" = "/dev/tty1" ] && exec prime-run startx

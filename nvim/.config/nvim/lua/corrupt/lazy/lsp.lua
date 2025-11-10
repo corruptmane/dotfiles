@@ -9,7 +9,16 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
+      {
+        'j-hui/fidget.nvim',
+        opts = {
+          notification = {
+            window = {
+              winblend = 0,
+            },
+          },
+        },
+      },
 
       -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
       -- used for completion, annotations and signatures of Neovim apis
@@ -28,28 +37,28 @@ return {
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          map('gd', '<cmd>FzfLua lsp_definitions<cr>', '[G]oto [D]efinition')
 
 
           -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          map('gr', '<cmd>FzfLua lsp_references<cr>', '[G]oto [R]eferences')
 
           -- Jump to the implementation of the word under your cursor.
           --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          map('gI', '<cmd>FzfLua lsp_implementations<cr>', '[G]oto [I]mplementation')
 
           -- Jump to the type of the word under your cursor.
           --  Useful when you're not sure what type a variable is and you want to see
           --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          map('<leader>D', '<cmd>FzfLua lsp_type_definitions<cr>', 'Type [D]efinition')
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          map('<leader>ds', '<cmd>FzfLua lsp_document_symbols<cr>', '[D]ocument [S]ymbols')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<leader>ws', '<cmd>FzfLua lsp_dynamic_workspace_symbols<cr>', '[W]orkspace [S]ymbols')
 
           -- Rename the variable under your cursor.
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
@@ -126,13 +135,35 @@ return {
             }
           }
         },
-        ['ruff-lsp'] = {
+        ruff = {
           init_options = {
             settings = {
+              configurationPreference = "filesystemFirst",
+              organizeImport = true,
+              lineLength = 79,
               format = {
-                args = {
-                  "--line-length=100", "--preview"
-                },
+                preview = true,
+              }
+            },
+          },
+        },
+        yamlls = {
+          settings = {
+            yaml = {
+              schemas = {
+                ['kubernetes'] = 'k8s-*.yaml',
+                ['https://json.schemastore.org/github-workflow.json'] = '/.github/workflows/*',
+                ['https://json.schemastore.org/github-action'] = '.github/action.{yml,yaml}',
+                ['https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json'] =
+                'docker-compose*.{yml,yaml}',
+                ['https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/argoproj.io/application_v1alpha1.json'] =
+                'argocd-application.yaml',
+                ['https://json.schemastore.org/ansible-stable-2.9'] = 'roles/tasks/**/*.{yml,yaml}',
+                ['https://json.schemastore.org/prettierrc'] = '.prettierrc.{yml,yaml}',
+                ['https://json.schemastore.org/kustomization'] = 'kustomization.{yml,yaml}',
+                ['https://json.schemastore.org/chart'] = 'Chart.{yml,yaml}',
+                ['https://json.schemastore.org/circleciconfig'] = '.circleci/**/*.{yml,yaml}',
+                ['https://golangci-lint.run/jsonschema/golangci.jsonschema.json'] = '.golangci.yml',
               },
             },
           },
@@ -164,9 +195,10 @@ return {
       -- for you, so that they are available from within Neovim.
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        'stylua',   -- Used to format Lua code
-        'pyright',  -- Python LSP
-        'ruff-lsp', -- Python LSP and formatter
+        'stylua',  -- Used to format Lua code
+        'pyright', -- Python LSP
+        'ruff',    -- Python LSP and formatter
+        'yamlls',  -- YAML LSP
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

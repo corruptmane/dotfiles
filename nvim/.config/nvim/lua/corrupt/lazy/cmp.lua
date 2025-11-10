@@ -22,9 +22,17 @@ return {
       }
     },
   },
-  version = 'v0.*',
+  build = 'cargo build --release',
+  -- version = '1.*',
+  -- version = 'v0.*',
   opts = {
-    keymap = { preset = 'default' },
+    keymap = {
+      preset = 'default',
+      ['<Tab>'] = { 'fallback' },
+      ['<S-Tab>'] = { 'fallback' },
+      ['<C-l>'] = { 'snippet_forward', 'fallback' },
+      ['<C-h>'] = { 'snippet_backward', 'fallback' },
+    },
 
     appearance = {
       use_nvim_cmp_as_default = true,
@@ -32,7 +40,7 @@ return {
     },
 
     sources = {
-      default = { 'lsp', 'path', 'snippets', 'luasnip', 'buffer' },
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
 
     signature = { enabled = true },
