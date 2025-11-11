@@ -1,0 +1,48 @@
+# Profile file. Runs on login. Environmental variables are set here.
+
+# default XDG directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_STATE_HOME="$HOME/.local/state"
+
+# default programs:
+export EDITOR="nvim"
+export SUDO_EDITOR="nvim"
+export TERMINAL="ghostty"
+
+# cleanup ~/ directory
+export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
+export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
+export PGSERVICEFILE="$XDG_CONFIG_HOME/pg/pg_service.conf"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export WAKATIME_HOME="$XDG_CONFIG_HOME/wakatime"
+export IPYTHONDIR="$XDG_CONFIG_HOME/jupyter"
+export KUBECONFIG="$XDG_CONFIG_HOME/kube/kubeconfig.yaml"
+export COLIMA_HOME="$XDG_CONFIG_HOME/colima"
+export AWS_SHARED_CREDENTIALS="$XDG_CONFIG_HOME/aws/credentials"
+export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
+export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+
+export GOPATH="$XDG_DATA_HOME/go"
+export GOBIN="$GOPATH/bin"
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export BUN_INSTALL="$XDG_DATA_HOME/bun"
+
+export PSQL_HISTORY="$XDG_CACHE_HOME/pg/psql_history"
+export HISTFILE="$XDG_CACHE_HOME/zsh/history"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export PYTHONCACHEPREFIX="$XDG_CACHE_HOME/python"
+export KUBECACHEDIR="$XDG_CACHE_HOME/kube"
+
+export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
+
+export PYTHONDONTWRITEBYTECODE=1
+
+export PATH="${HOME}/.local/bin:${PATH}:${XDG_DATA_HOME}/bin:${XDG_DATA_HOME}/cargo/bin:${GOBIN}"
+
+for env_file in "$XDG_CONFIG_HOME"/env/*.env; do
+	[ -f "$env_file" ] && source $env_file
+done
