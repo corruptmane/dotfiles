@@ -27,6 +27,8 @@
       # $ nix-env -qaP | grep wget
       environment.systemPackages = [
 	pkgs.neovim
+	pkgs.zsh
+	pkgs.ffmpeg
 	pkgs.mkalias
 	pkgs.tmux
 	pkgs.just
@@ -39,6 +41,7 @@
 	pkgs.bun
 	pkgs.go
 	pkgs.rustup
+	pkgs.opentofu
 	pkgs.lazygit
 	pkgs.lazydocker
 	pkgs.yazi
@@ -60,6 +63,7 @@
 	pkgs.docker-client
 	pkgs.docker-compose
 	pkgs.docker-buildx
+	pkgs.kubectl
 	pkgs.k9s
 	pkgs.natscli
 	pkgs.telegram-desktop
@@ -90,6 +94,8 @@
 	  "zip"
 	  "gnupg"
 	  "pinentry-mac"
+	  "zsh-autosuggestions"
+	  "zsh-syntax-highlighting"
 	];
 	casks = [
 	  "ghostty"
