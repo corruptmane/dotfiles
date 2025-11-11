@@ -36,6 +36,7 @@
 	pkgs.bitwarden-cli
 	pkgs.keepassxc
 	pkgs.uv
+	pkgs.go
 	pkgs.lazygit
 	pkgs.lazydocker
 	pkgs.yazi
@@ -46,10 +47,13 @@
 	pkgs.opencode
 	pkgs.claude-code
 	pkgs.wakatime-cli
+	pkgs.pre-commit
 	pkgs.fzf
 	pkgs.ripgrep
+	pkgs.fd
 	pkgs.bat
 	pkgs.bat-extras.batman
+	pkgs.aerospace
 	pkgs.colima
 	pkgs.docker-client
 	pkgs.docker-compose
@@ -57,19 +61,43 @@
 	pkgs.k9s
 	pkgs.natscli
 	pkgs.telegram-desktop
+	pkgs.spotify
+	pkgs.qbittorrent
+	pkgs.btop
+	pkgs.htop
+	pkgs.discord
+	pkgs.fastfetch
+	pkgs.rsync
+	pkgs.stow
+	pkgs.syncthing
+	pkgs.p7zip
+	pkgs.unzip
+	pkgs.tree
       ];
 
       homebrew = {
 	enable = true;
 	brews = [
 	  "mas"
+	  "coreutils"
+	  "gawk"
+	  "grep"
+	  "gnu-sed"
+	  "gnu-tar"
+	  "make"
+	  "zip"
+	  "gnupg"
+	  "pinentry-mac"
 	];
 	casks = [
 	  "ghostty"
 	  "obs"
+	  "karabiner-elements"
 	];
 	masApps = {
 	  "Spark" = 1176895641;
+	  "Dropover" = 1355679052;
+	  "Velja" = 1607635845;
 	};
 	onActivation = {
 	  cleanup = "zap";
@@ -81,6 +109,20 @@
       fonts.packages = [
 	pkgs.nerd-fonts.jetbrains-mono
       ];
+
+      system.defaults = {
+	dock.autohide = true;
+	finder.FXPreferredViewStyle = "clmv";
+	loginwindow.GuestEnabled = false;
+	NSGlobalDomain.AppleICUForce24HourTime = true;
+	NSGlobalDomain.AppleInterfaceStyle = "Dark";
+	NSGlobalDomain.KeyRepeat = 2;
+      };
+
+      security.sudo.extraConfig = ''
+Defaults timestamp_timeout=30
+Defaults !tty_tickets
+      '';
 
       # Necessary for using flakes on this system.
       nix.settings.experimental-features = "nix-command flakes";
