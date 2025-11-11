@@ -1,6 +1,6 @@
 font-family = JetBrainsMono NFM
 font-style = Regular
-font-size = 16
+font-size = 18
 
 theme = TokyoNight Night
 background-opacity = 0.9
@@ -9,3 +9,4 @@ background-blur = 7
 macos-non-native-fullscreen = true
 
 keybind = global:alt+shift+enter=toggle_quick_terminal
+keybind = shift+enter=text:\x1b\r
