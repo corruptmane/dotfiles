@@ -1,0 +1,3 @@
+--target=$HOME
+--dir=.
+--dotfiles
