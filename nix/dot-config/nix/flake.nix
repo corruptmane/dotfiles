@@ -36,7 +36,9 @@
 	pkgs.bitwarden-cli
 	pkgs.keepassxc
 	pkgs.uv
+	pkgs.bun
 	pkgs.go
+	pkgs.rustup
 	pkgs.lazygit
 	pkgs.lazydocker
 	pkgs.yazi
