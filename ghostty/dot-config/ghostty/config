@@ -1,0 +1,11 @@
+font-family = JetBrainsMono NFM
+font-style = Regular
+font-size = 16
+
+theme = TokyoNight Night
+background-opacity = 0.9
+background-blur = 7
+
+macos-non-native-fullscreen = true
+
+keybind = global:alt+shift+enter=toggle_quick_terminal
