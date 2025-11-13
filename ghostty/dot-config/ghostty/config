@@ -8,5 +8,7 @@ background-blur = 7
 
 macos-non-native-fullscreen = true
 
+shell-integration-features = ssh-terminfo,ssh-env
+
 keybind = global:alt+shift+enter=toggle_quick_terminal
 keybind = shift+enter=text:\x1b\r
