@@ -42,6 +42,7 @@
 	pkgs.go
 	pkgs.rustup
 	pkgs.opentofu
+	pkgs.ansible
 	pkgs.lazygit
 	pkgs.lazydocker
 	pkgs.yazi
@@ -57,7 +58,6 @@
 	pkgs.ripgrep
 	pkgs.fd
 	pkgs.bat
-	pkgs.bat-extras.batman
 	pkgs.aerospace
 	pkgs.colima
 	pkgs.docker-client
@@ -75,10 +75,29 @@
 	pkgs.fastfetch
 	pkgs.rsync
 	pkgs.stow
-	pkgs.syncthing
 	pkgs.p7zip
 	pkgs.unzip
 	pkgs.tree
+	pkgs.typst
+	# LSPs, DAPs, formatters, linters etc.
+	pkgs.lua-language-server
+	pkgs.stylua
+	pkgs.terraform-ls
+	pkgs.tofu-ls
+	pkgs.ruff
+	pkgs.mypy
+	pkgs.pyright
+	pkgs.gopls
+	pkgs.sqls
+	pkgs.vscode-json-languageserver
+	pkgs.typstyle
+	pkgs.tinymist
+	pkgs.bash-language-server
+	pkgs.yaml-language-server
+	pkgs.nginx-language-server
+	pkgs.marksman
+	pkgs.just-lsp
+	pkgs.tree-sitter
       ];
 
       homebrew = {
@@ -101,6 +120,7 @@
 	  "ghostty"
 	  "obs"
 	  "karabiner-elements"
+	  "syncthing-app"
 	];
 	masApps = {
 	  "Spark" = 1176895641;
