@@ -1,0 +1,45 @@
+return {
+
+  { -- Adds git related signs to the gutter, as well as utilities for managing changes
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup({
+        signs = {
+          add = { text = "+" },
+          change = { text = "~" },
+          delete = { text = "_" },
+          topdelete = { text = "‾" },
+          changedelete = { text = "~" },
+        },
+      })
+      vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", { desc = "[G]it [P]review (diff)" })
+      vim.keymap.set(
+        "n",
+        "<leader>gb",
+        ":Gitsigns toggle_current_line_blame<CR>",
+        { desc = "[G]it [B]lame current line" }
+      )
+    end,
+  },
+
+  {
+    "kdheepak/lazygit.nvim",
+    lazy = false,
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    -- setting the keybinding for LazyGit with 'keys' is recommended in
+    -- order to load the plugin when the command is run for the first time
+    config = function()
+      vim.keymap.set("n", "<leader>gl", "<cmd>LazyGit<cr>", { desc = "[G]it [L]azygit" })
+    end,
+  },
+}
