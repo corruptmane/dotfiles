@@ -65,7 +65,7 @@ function M.setup()
       local client = vim.lsp.get_client_by_id(event.data.client_id)
 
       -- Format on save - FIX: Use buffer-local augroup to prevent duplicate autocmds
-      if client and client.supports_method("textDocument/formatting") then
+      if client and client:supports_method("textDocument/formatting") then
         local format_augroup = vim.api.nvim_create_augroup("lsp-format-" .. event.buf, { clear = true })
         vim.api.nvim_create_autocmd("BufWritePre", {
           buffer = event.buf,
@@ -108,7 +108,7 @@ function M.setup_servers()
   local lua_servers = require("corrupt.lsp.servers.lua")
   local go_servers = require("corrupt.lsp.servers.go")
   local terraform_servers = require("corrupt.lsp.servers.terraform")
-  local sql_servers = require("corrupt.lsp.servers.sql")
+  -- local sql_servers = require("corrupt.lsp.servers.sql")
   local typst_servers = require("corrupt.lsp.servers.typst")
 
   local docker_servers = require("corrupt.lsp.servers.docker")
@@ -128,7 +128,7 @@ function M.setup_servers()
     lua_servers,
     go_servers,
     terraform_servers,
-    sql_servers,
+    -- sql_servers,
     typst_servers,
     docker_servers,
     bash_servers,
