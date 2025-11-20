@@ -1,4 +1,4 @@
-# Profile file. Runs on login. Environmental variables are set here.
+# Profile file. Runs on login. Environment variables are set here.
 
 # default XDG directories
 export XDG_CONFIG_HOME="$HOME/.config"
@@ -23,6 +23,9 @@ export COLIMA_HOME="$XDG_CONFIG_HOME/colima"
 export AWS_SHARED_CREDENTIALS="$XDG_CONFIG_HOME/aws/credentials"
 export AWS_CONFIG_FILE="$XDG_CONFIG_HOME/aws/config"
 export DOCKER_CONFIG="$XDG_CONFIG_HOME/docker"
+export ANSIBLE_HOME="$XDG_CONFIG_HOME/ansible"
+export ANSIBLE_CONFIG="$XDG_CONFIG_HOME/ansible.cfg"
+export ANSIBLE_GALAXY_CACHE_DIR="$XDG_CACHE_HOME/ansible/galaxy_home"
 
 export GOPATH="$XDG_DATA_HOME/go"
 export GOBIN="$GOPATH/bin"
