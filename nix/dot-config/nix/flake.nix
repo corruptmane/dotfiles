@@ -43,6 +43,7 @@
 	pkgs.rustup
 	pkgs.opentofu
 	pkgs.ansible
+	pkgs.gh
 	pkgs.lazygit
 	pkgs.lazydocker
 	pkgs.yazi
