@@ -44,6 +44,7 @@
 	pkgs.opentofu
 	pkgs.ansible
 	pkgs.gh
+	pkgs.buf
 	pkgs.lazygit
 	pkgs.lazydocker
 	pkgs.yazi
@@ -80,6 +81,7 @@
 	pkgs.unzip
 	pkgs.tree
 	pkgs.typst
+	pkgs.espanso
 	# LSPs, DAPs, formatters, linters etc.
 	pkgs.lua-language-server
 	pkgs.stylua
