@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+# Directory containing your projects
+PROJECTS_DIR="$HOME/IT"
+
+# Check if projects directory exists
+if [ ! -d "$PROJECTS_DIR" ]; then
+    echo "Projects directory $PROJECTS_DIR does not exist"
+    read
+    exit 1
+fi
+
+# Use fzf to select a project
+PROJECT=$(fd -t d -d 1 . "$PROJECTS_DIR" | \
+          sed "s|$PROJECTS_DIR/||" | \
+          fzf --prompt="Select project: " --reverse)
+PROJECT="${PROJECT%/}"
+
+# Exit if no project selected
+if [ -z "$PROJECT" ]; then
+    echo "No project selected"
+    exit 0
+fi
+
+PROJECT_PATH="$PROJECTS_DIR/$PROJECT"
+SESSION_NAME="$PROJECT"
+
+# Check if session already exists
+if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
+    echo "Session '$SESSION_NAME' already exists. Switching..."
+    if [ -n "$TMUX" ]; then
+        # We're inside tmux, so switch to the session
+        tmux switch-client -t "$SESSION_NAME"
+    else
+        # We're outside tmux, so attach
+        tmux attach-session -t "$SESSION_NAME"
+    fi
+    exit 0
+fi
+
+# Determine which opencode binary to use
+OPENCODE_BINARY="opencode"
+if [ -f "$PROJECT_PATH/.env" ]; then
+    # Source .env and extract OPENCODE_BINARY_NAME
+    CUSTOM_BINARY=$(grep "^OPENCODE_BINARY_NAME=" "$PROJECT_PATH/.env" | cut -d '=' -f2 | tr -d '"' | tr -d "'")
+    if [ -n "$CUSTOM_BINARY" ] && command -v "$CUSTOM_BINARY" &> /dev/null; then
+        OPENCODE_BINARY="$CUSTOM_BINARY"
+        echo "Using custom opencode binary: $OPENCODE_BINARY"
+    fi
+fi
+
+# Create new tmux session
+tmux new-session -d -s "$SESSION_NAME" -c "$PROJECT_PATH"
+
+# Rename first window to 'code' and start neovim
+tmux rename-window -t "$SESSION_NAME:1" "code"
+tmux send-keys -t "$SESSION_NAME:code" "n ." Enter
+
+# Create second window named 'run'
+tmux new-window -t "$SESSION_NAME" -n "run" -c "$PROJECT_PATH"
+
+# Create third window named 'claude' and start claude
+tmux new-window -t "$SESSION_NAME" -n "ai" -c "$PROJECT_PATH"
+tmux send-keys -t "$SESSION_NAME:ai" "$OPENCODE_BINARY" Enter
+
+# Switch or attach to the session, starting with the 'code' window
+tmux select-window -t "$SESSION_NAME:code"
+if [ -n "$TMUX" ]; then
+    # We're inside tmux, so switch to the new session
+    tmux switch-client -t "$SESSION_NAME"
+else
+    # We're outside tmux, so attach
+    tmux attach-session -t "$SESSION_NAME"
+fi
