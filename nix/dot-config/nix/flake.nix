@@ -68,8 +68,6 @@
 	pkgs.kubectl
 	pkgs.k9s
 	pkgs.natscli
-	pkgs.telegram-desktop
-	pkgs.spotify
 	pkgs.qbittorrent
 	pkgs.btop
 	pkgs.htop
@@ -129,6 +127,7 @@
 	  "Spark" = 1176895641;
 	  "Dropover" = 1355679052;
 	  "Velja" = 1607635845;
+	  "Telegram" = 747648890;
 	};
 	onActivation = {
 	  cleanup = "zap";
