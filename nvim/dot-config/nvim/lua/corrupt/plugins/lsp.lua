@@ -25,5 +25,6 @@ return {
     },
   },
   -- used for completion, annotations and signatures of Neovim apis
-  { "Bilal2453/luvit-meta", lazy = true },
+  { "Bilal2453/luvit-meta",            lazy = true },
+  { "liangxianzhe/floating-input.nvim" },
 }
