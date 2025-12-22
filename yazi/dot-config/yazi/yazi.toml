@@ -1,0 +1,7 @@
+[mgr]
+show_hidden = true
+
+[opener]
+play = [
+	{ run = 'iina --no-stdin "$@"', orphan = true, for = "unix" },
+]
