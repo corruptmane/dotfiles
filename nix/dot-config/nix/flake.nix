@@ -44,6 +44,7 @@
 	pkgs.opentofu
 	pkgs.ansible
 	pkgs.gh
+	pkgs.yt-dlp
 	pkgs.buf
 	pkgs.lazygit
 	pkgs.lazydocker
