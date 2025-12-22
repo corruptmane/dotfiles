@@ -33,6 +33,7 @@ return {
         { desc = "[S]earch [D]iagnostics" }
       )
       vim.keymap.set("n", "<leader>sp", "<cmd>FzfLua git_files<cr>", { desc = "[S]earch [P]roject git files" })
+      vim.keymap.set("n", "<leader>sG", "<cmd>FzfLua git_status<cr>", { desc = "[Search] [Git] status files" })
       vim.keymap.set("n", "<leader>sr", "<cmd>FzfLua resume<cr>", { desc = "[S]earch [R]esume" })
       vim.keymap.set("n", "<leader><leader>", "<cmd>FzfLua buffers<cr>", { desc = "[,] Find existing buffers" })
       vim.keymap.set(
