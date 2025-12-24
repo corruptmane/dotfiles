@@ -72,7 +72,6 @@
 	pkgs.qbittorrent
 	pkgs.btop
 	pkgs.htop
-	pkgs.discord
 	pkgs.fastfetch
 	pkgs.rsync
 	pkgs.stow
