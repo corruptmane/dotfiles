@@ -91,6 +91,47 @@ help() {
 
 # ---------
 
+## claude code
+# ---------
+
+# load oauth token from current profile
+if [[ -f "$CLAUDE_CONFIG_DIR/.oauth-token" ]]; then
+	export CLAUDE_CODE_OAUTH_TOKEN=$(cat "$CLAUDE_CONFIG_DIR/.oauth-token")
+fi
+
+# claude profile switcher
+switch-claude() {
+	local profile="$1"
+
+	if [[ -z "$profile" ]]; then
+		echo "Usage: switch-claude <profile-name>"
+		echo ""
+		echo "Available profiles:"
+		ls -1 "$HOME/.claude/profiles/" 2>/dev/null || echo "  (none found)"
+		return 1
+	fi
+
+	# validate profile exists
+	if [[ ! -d "$HOME/.claude/profiles/$profile" ]]; then
+		echo "Error: Profile '$profile' not found"
+		echo ""
+		echo "Available profiles:"
+		ls -1 "$HOME/.claude/profiles/"
+		return 1
+	fi
+
+	# switch the symlink
+	ln -sfn "$HOME/.claude/profiles/$profile" "$HOME/.claude/current"
+
+	# update current session
+	export CLAUDE_CONFIG_DIR="$HOME/.claude/current"
+
+	# display status
+	echo "✅ Switched to claude profile: $profile"
+}
+
+# ---------
+
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line

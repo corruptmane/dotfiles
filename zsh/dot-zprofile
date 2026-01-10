@@ -44,6 +44,9 @@ export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 
 export PYTHONDONTWRITEBYTECODE=1
 
+# Claude Code configuration
+export CLAUDE_CONFIG_DIR="$HOME/.claude/current"
+
 export PATH="${HOME}/.local/bin:${PATH}:${XDG_DATA_HOME}/bin:${XDG_DATA_HOME}/cargo/bin:${GOBIN}"
 
 for env_file in "$XDG_CONFIG_HOME"/env/*.env; do
