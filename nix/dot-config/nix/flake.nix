@@ -39,6 +39,7 @@
 	pkgs.keepassxc
 	pkgs.uv
 	pkgs.bun
+	pkgs.nodejs_25
 	pkgs.go
 	pkgs.rustup
 	pkgs.opentofu
