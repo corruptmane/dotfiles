@@ -54,14 +54,13 @@ tmux new-session -d -s "$SESSION_NAME" -c "$PROJECT_PATH"
 
 # Rename first window to 'code' and start neovim
 tmux rename-window -t "$SESSION_NAME:1" "code"
-tmux send-keys -t "$SESSION_NAME:code" "n ." Enter
+tmux send-keys -t "$SESSION_NAME:code" "nvim ." Enter
 
 # Create second window named 'run'
 tmux new-window -t "$SESSION_NAME" -n "run" -c "$PROJECT_PATH"
 
-# Create third window named 'claude' and start claude
+# Create third window named 'ai'
 tmux new-window -t "$SESSION_NAME" -n "ai" -c "$PROJECT_PATH"
-tmux send-keys -t "$SESSION_NAME:ai" "$OPENCODE_BINARY" Enter
 
 # Switch or attach to the session, starting with the 'code' window
 tmux select-window -t "$SESSION_NAME:code"
