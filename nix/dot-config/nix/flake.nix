@@ -51,13 +51,11 @@
 	pkgs.lazydocker
 	pkgs.yazi
 	pkgs.zoxide
-	pkgs.zoom-us
 	pkgs.raycast
 	pkgs.chatterino7
 	pkgs.opencode
 	pkgs.claude-code
 	pkgs.wakatime-cli
-	pkgs.pre-commit
 	pkgs.fzf
 	pkgs.ripgrep
 	pkgs.fd
@@ -97,7 +95,7 @@
 	pkgs.bash-language-server
 	pkgs.yaml-language-server
 	pkgs.nginx-language-server
-	pkgs.marksman
+	pkgs.markdown-oxide
 	pkgs.just-lsp
 	pkgs.tree-sitter
       ];
@@ -129,6 +127,8 @@
 	  "Dropover" = 1355679052;
 	  "Velja" = 1607635845;
 	  "Telegram" = 747648890;
+	  "Spokenly" = 6740315592;
+	  "WireGuard VPN" = 1451685025;
 	};
 	onActivation = {
 	  cleanup = "zap";
