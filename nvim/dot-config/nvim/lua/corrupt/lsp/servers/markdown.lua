@@ -1,11 +1,9 @@
 --- @brief
---- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/marksman.lua
+--- https://github.com/neovim/nvim-lspconfig/blob/master/lsp/markdown_oxide.lua
 
----@type table<string, vim.lsp.Config>
+---@type vim.lsp.Config
 return {
-  marksman = {
-    cmd = { "marksman", "server" },
-    filetypes = { "markdown", "markdown.mdx" },
-    root_markers = { ".marksman.toml", ".git" },
-  },
+  cmd = { 'markdown-oxide' },
+  filetypes = { 'markdown' },
+  root_markers = { '.git', '.obsidian', '.moxide.toml' },
 }
