@@ -85,6 +85,7 @@
 	pkgs.terraform-ls
 	pkgs.tofu-ls
 	pkgs.ruff
+	pkgs.ty
 	pkgs.mypy
 	pkgs.pyright
 	pkgs.gopls
