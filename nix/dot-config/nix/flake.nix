@@ -39,7 +39,6 @@
 	pkgs.keepassxc
 	pkgs.uv
 	pkgs.bun
-	pkgs.nodejs_25
 	pkgs.go
 	pkgs.rustup
 	pkgs.opentofu
@@ -54,7 +53,6 @@
 	pkgs.raycast
 	pkgs.chatterino7
 	pkgs.opencode
-	pkgs.claude-code
 	pkgs.wakatime-cli
 	pkgs.fzf
 	pkgs.ripgrep
@@ -67,6 +65,12 @@
 	pkgs.docker-buildx
 	pkgs.kubectl
 	pkgs.k9s
+	pkgs.kubernetes-helm
+	pkgs.cilium-cli
+	pkgs.hubble
+	pkgs.fluxcd
+	pkgs.argocd
+	pkgs.awscli2
 	pkgs.natscli
 	pkgs.qbittorrent
 	pkgs.btop
@@ -116,17 +120,19 @@
 	  "pinentry-mac"
 	  "zsh-autosuggestions"
 	  "zsh-syntax-highlighting"
+	  "talosctl"
+	  "node"
 	];
 	casks = [
 	  "ghostty"
 	  "obs"
 	  "karabiner-elements"
 	  "syncthing-app"
+	  "orbstack"
 	];
 	masApps = {
 	  "Spark" = 1176895641;
 	  "Dropover" = 1355679052;
-	  "Velja" = 1607635845;
 	  "Telegram" = 747648890;
 	  "Spokenly" = 6740315592;
 	  "WireGuard VPN" = 1451685025;
