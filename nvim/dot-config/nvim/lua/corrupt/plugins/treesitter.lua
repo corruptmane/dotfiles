@@ -80,7 +80,7 @@ return {
         indent = { enable = true, disable = { "ruby" } },
       }
 
-      require("nvim-treesitter.configs").setup(opts)
+      require("nvim-treesitter").setup(opts)
 
       require("treesitter-context").setup({
         max_lines = 20,
