@@ -44,7 +44,8 @@ export PYTHON_HISTORY="$XDG_STATE_HOME/python_history"
 
 export PYTHONDONTWRITEBYTECODE=1
 
-export PATH="${HOME}/.local/bin:${PATH}:${XDG_DATA_HOME}/bin:${XDG_DATA_HOME}/cargo/bin:${GOBIN}"
+export PATH="${HOME}/.local/bin:/opt/homebrew/share/android-commandlinetools/platform-tools:${PATH}:${XDG_DATA_HOME}/bin:${XDG_DATA_HOME}/cargo/bin:${GOBIN}"
+export PATH="/opt/homebrew/share/android-commandlinetools/platform-tools:$PATH"
 
 for env_file in "$XDG_CONFIG_HOME"/env/*.env; do
 	[ -f "$env_file" ] && source $env_file

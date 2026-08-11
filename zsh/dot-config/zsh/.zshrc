@@ -98,6 +98,16 @@ bindkey '^e' edit-command-line
 # Load zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
+# Load kubectl completion
+if command -v kubectl >/dev/null 2>&1; then
+	source <(kubectl completion zsh)
+fi
+
+# Load kubectl-cnpg completion
+if command -v kubectl-cnpg >/dev/null 2>&1; then
+	source <(kubectl-cnpg completion zsh)
+fi
+
 # Load various plugins; zsh-syntax-highlighting and zsh-autosuggestions should be last.
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
