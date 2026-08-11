@@ -50,7 +50,6 @@
 	pkgs.lazydocker
 	pkgs.yazi
 	pkgs.zoxide
-	pkgs.raycast
 	pkgs.chatterino7
 	pkgs.opencode
 	pkgs.wakatime-cli
@@ -64,6 +63,7 @@
 	pkgs.docker-compose
 	pkgs.docker-buildx
 	pkgs.kubectl
+	pkgs.kubectl-cnpg
 	pkgs.k9s
 	pkgs.kubernetes-helm
 	pkgs.cilium-cli
@@ -122,6 +122,11 @@
 	  "zsh-syntax-highlighting"
 	  "talosctl"
 	  "node"
+	  "stow"
+	  "openssl"
+	  "openssh"
+	  "libfido2"
+	  "gradle"
 	];
 	casks = [
 	  "ghostty"
@@ -129,6 +134,10 @@
 	  "karabiner-elements"
 	  "syncthing-app"
 	  "orbstack"
+	  "localsend"
+	  "android-commandlinetools"
+	  "temurin@21"
+	  "raycast"
 	];
 	masApps = {
 	  "Spark" = 1176895641;
@@ -189,6 +198,7 @@ Defaults !tty_tickets
 	  nix-homebrew = {
 	    # Install homebrew under the default prefix
 	    enable = true;
+	    autoMigrate = true;
 
 	    # Apple Silicon Only: Also install Homebrew under the default Intel prefix for Rosetta 2
 	    enableRosetta = true;
