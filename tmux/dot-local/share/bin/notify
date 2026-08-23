@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+# notify — push a notification through the homelab ntfy server
+#
+# Usage:
+#   notify [flags] [topic] <message>...
+#   some-command | notify [flags]          # message read from stdin
+#
+# The topic is optional: with 2+ positional args the first one is the topic,
+# otherwise the message goes to the default topic.
+#
+# Flags:
+#   -t <title>    notification title
+#   -p <prio>     min | low | default | high | urgent   (or 1-5)
+#   -T <tags>     comma-separated tags / emoji shortcodes (e.g. warning,rocket)
+#   -m            render body as markdown
+#   -h            this help
+#
+# Environment:
+#   NTFY_TOKEN    (required) access token, tk_...
+#   NTFY_URL      server URL          (default: https://notify.corruptmane.xyz)
+#   NTFY_TOPIC    default topic       (default: homelab)
+#
+# Examples:
+#   notify "flux reconcile done"
+#   notify -t Backup -p high -T warning backups "snapshot failed, check logs"
+#   df -h / | notify -t "disk report"
+
+set -euo pipefail
+
+URL="${NTFY_URL:-https://notify.corruptmane.xyz}"
+DEFAULT_TOPIC="${NTFY_TOPIC:-homelab}"
+
+usage() {
+  sed -n '2,27p' "${BASH_SOURCE[0]}" | sed 's/^# \{0,1\}//'
+}
+
+if [[ "${1:-}" == "-h" || "${1:-}" == "--help" ]]; then
+  usage
+  exit 0
+fi
+
+if [[ -z "${NTFY_TOKEN:-}" ]]; then
+  echo "notify: NTFY_TOKEN is not set (tk_...)" >&2
+  exit 78
+fi
+
+title=""
+prio=""
+tags=""
+markdown=""
+while getopts ":t:p:T:mh" opt; do
+  case "$opt" in
+    t) title="$OPTARG" ;;
+    p) prio="$OPTARG" ;;
+    T) tags="$OPTARG" ;;
+    m) markdown=1 ;;
+    h) usage; exit 0 ;;
+    \?) echo "notify: unknown option: -$OPTARG" >&2; usage >&2; exit 64 ;;
+  esac
+done
+shift $((OPTIND - 1))
+
+topic="$DEFAULT_TOPIC"
+if (( $# >= 2 )); then
+  topic="$1"
+  shift
+fi
+
+if (( $# > 0 )); then
+  body="$*"
+else
+  body="$(cat)"
+fi
+
+if [[ -z "$body" ]]; then
+  echo "notify: empty message (pass args or pipe stdin)" >&2
+  exit 64
+fi
+
+hdr=(-H "Authorization: Bearer ${NTFY_TOKEN}")
+if [[ -n "$title" ]]; then
+  hdr+=(-H "Title: $title")
+fi
+if [[ -n "$prio" ]]; then
+  hdr+=(-H "Priority: $prio")
+fi
+if [[ -n "$tags" ]]; then
+  hdr+=(-H "Tags: $tags")
+fi
+if [[ -n "$markdown" ]]; then
+  hdr+=(-H "Markdown: yes")
+fi
+
+exec curl -fsS -o /dev/null "${hdr[@]}" --data-binary "$body" "$URL/$topic"

@@ -1,4 +1,5 @@
 tmux/dot-config/tmux/plugins
 tmux/dot-local/share/*
 !tmux/dot-local/share/bin/start-project-session
+!tmux/dot-local/share/bin/notify
 zsh/dot-config/zsh/.zcompdump
