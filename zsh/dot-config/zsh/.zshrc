@@ -98,6 +98,9 @@ bindkey '^e' edit-command-line
 # Load zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
+## Load k8s-related completions
+# ---------
+
 # Load kubectl completion
 if command -v kubectl >/dev/null 2>&1; then
 	source <(kubectl completion zsh)
@@ -107,6 +110,28 @@ fi
 if command -v kubectl-cnpg >/dev/null 2>&1; then
 	source <(kubectl-cnpg completion zsh)
 fi
+
+# Load flux completion
+if command -v flux >/dev/null 2>&1; then
+	source <(flux completion zsh)
+fi
+
+# Load helm completion
+if command -v helm >/dev/null 2>&1; then
+	source <(helm completion zsh)
+fi
+
+# Load talosctl completion
+if command -v talosctl >/dev/null 2>&1; then
+	source <(talosctl completion zsh)
+fi
+
+# Load cilium completion
+if command -v cilium >/dev/null 2>&1; then
+	source <(cilium completion zsh)
+fi
+
+# ---------
 
 # Load various plugins; zsh-syntax-highlighting and zsh-autosuggestions should be last.
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh

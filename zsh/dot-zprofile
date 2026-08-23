@@ -11,6 +11,10 @@ export EDITOR="nvim"
 export SUDO_EDITOR="nvim"
 export TERMINAL="ghostty"
 
+# disable OhMyOpenAgent telemetry
+export OMO_SEND_ANONYMOUS_TELEMETRY=0
+export OMO_DISABLE_POSTHOG=1
+
 # cleanup ~/ directory
 export PSQLRC="$XDG_CONFIG_HOME/pg/psqlrc"
 export PGPASSFILE="$XDG_CONFIG_HOME/pg/pgpass"
