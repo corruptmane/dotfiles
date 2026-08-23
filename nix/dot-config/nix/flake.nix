@@ -127,6 +127,7 @@
 	  "openssh"
 	  "libfido2"
 	  "gradle"
+	  "ntfy"
 	];
 	casks = [
 	  "ghostty"
@@ -145,6 +146,7 @@
 	  "Telegram" = 747648890;
 	  "Spokenly" = 6740315592;
 	  "WireGuard VPN" = 1451685025;
+	  "Amphetamine" = 937984704;
 	};
 	onActivation = {
 	  cleanup = "zap";
