@@ -1,0 +1,28 @@
+# ntfy client config
+#
+# Install to : ~/.config/ntfy/client.yml   (chmod 600 — holds the token)
+# Consumed by: LaunchAgent xyz.corruptmane.ntfy  (`ntfy subscribe --from-config`)
+# Docs       : https://docs.ntfy.sh/subscribe/cli/
+#
+# Sibling files this references:
+#   - ntfy-mac-notify.applescript → ~/.config/ntfy/mac-notify.applescript
+
+# Base URL used to expand short topic names in `ntfy publish` / `ntfy subscribe`
+default-host: https://notify.corruptmane.xyz
+
+# Same value as SSM /homelab/ntfy-agent-token
+default-token: tk_REPLACE_ME
+
+subscribe:
+  - topic: homelab
+    # Robust macOS display: AppleScript reads the NTFY_* env vars itself via
+    # `system attribute`, so message content never passes through shell
+    # interpolation (the docs' "$message" inline example breaks on quotes).
+    command: /usr/bin/osascript /Users/corrupt/.config/ntfy/mac-notify.applescript
+
+    # Minimal inline alternative (no title fallback / priority sound):
+    # command: osascript -e 'display notification (system attribute "NTFY_MESSAGE") with title (system attribute "NTFY_TITLE")'
+
+    # Optional per-subscription filter example:
+    # if:
+    #   priority: high,urgent

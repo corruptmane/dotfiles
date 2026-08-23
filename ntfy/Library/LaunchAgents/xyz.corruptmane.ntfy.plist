@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  ntfy client LaunchAgent - keeps `ntfy subscribe --from-config` running.
+
+  Install to : ~/Library/LaunchAgents/xyz.corruptmane.ntfy.plist
+  Load once  : launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/xyz.corruptmane.ntfy.plist
+  Status     : launchctl print gui/$(id -u)/xyz.corruptmane.ntfy
+  Stop       : launchctl bootout gui/$(id -u)/xyz.corruptmane.ntfy
+  Logs       : ~/Library/Logs/ntfy-client.log
+-->
+<plist version="1.0">
+<dict>
+	<key>Label</key>
+	<string>xyz.corruptmane.ntfy</string>
+
+	<key>ProgramArguments</key>
+	<array>
+		<string>/opt/homebrew/bin/ntfy</string>
+		<string>subscribe</string>
+		<string>--from-config</string>
+	</array>
+
+	<!-- start at login/boot -->
+	<key>RunAtLoad</key>
+	<true/>
+
+	<!-- restart on crash / non-zero exit -->
+	<key>KeepAlive</key>
+	<true/>
+
+	<key>ProcessType</key>
+	<string>Background</string>
+
+	<key>StandardOutPath</key>
+	<string>/Users/corrupt/Library/Logs/ntfy-client.log</string>
+	<key>StandardErrorPath</key>
+	<string>/Users/corrupt/Library/Logs/ntfy-client.log</string>
+</dict>
+</plist>
